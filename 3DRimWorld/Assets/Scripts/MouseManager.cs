@@ -22,7 +22,7 @@ public class MouseManager : MonoBehaviour
 
         // Was the mouse pressed down this frame?
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             // Yes, the left mouse button was pressed this frame
             // Is the mouse over a cube
@@ -39,25 +39,36 @@ public class MouseManager : MonoBehaviour
 
                 // Now let's spawn a new object
 
-                Vector3 spawnSpot = hitInfo.collider.transform.position + hitInfo.normal;
+                // Add spawn point to list of prefabs we're going to spawn.
 
-                Instantiate(thePrefabToSpawn, spawnSpot, Quaternion.identity);
-
-                spawnPoints.Add(spawnSpot);
-
-                if (spawnPoints.Contains(spawnSpot))
+                if (!spawnPoints.Contains(hitInfo.collider.transform.position + hitInfo.normal))
                 {
-                    Debug.Log("Hazzaahh");
+                    spawnPoints.Add(hitInfo.collider.transform.position + hitInfo.normal);
                 }
+                
             }
-
-
         }
 
-        // Could we us Input.GetMouseButton(0))
-        // Have an array/list of vector3's for spawn spots.  If array does not already contain hitInfo.collider.transform.position + hitInfo.normal
-        // Add this position to list.
-        // On mouse up, loop through list and instanstiate.
+        // Spawn items in list.
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            // Spawn
+
+            Debug.Log("Instatiating");
+
+            foreach (Vector3 v in spawnPoints)
+            {
+                Instantiate(thePrefabToSpawn, v, Quaternion.identity);
+            }
+
+            for (int i = 0; i < spawnPoints.Count; i++)
+            {
+                Debug.Log("Clearing list of objects to Instantiate.");
+                spawnPoints.RemoveAt(i);
+                Debug.Log("List is now at length " + spawnPoints.Count);
+            }
+        }
 
 
     }
