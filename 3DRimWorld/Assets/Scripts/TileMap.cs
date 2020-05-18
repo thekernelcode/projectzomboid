@@ -7,15 +7,15 @@ public class TileMap : MonoBehaviour
 
     public TileType[] tileTypes;
 
-    int[,,] tiles;
+    public int[,,] tiles;
 
     int mapSizeX = 10;
     int mapSizeZ = 10;
-    int mapHeight = 2;
+    int mapHeight = 10; 
 
-    enum terrainTypes
+    public enum terrainTypes
     {
-        GRASS, SWAMP, MOUNTAIN, AIR
+        GRASS, SWAMP, MOUNTAIN, AIR, WALL
     }
 
 
@@ -102,7 +102,7 @@ public class TileMap : MonoBehaviour
             {
                 for (int z = 0; z < mapSizeZ; z++)
                 {
-                    Debug.Log("assigning tiletype from scri");
+                    Debug.Log("assigning tiletype from script");
                     TileType tt = tileTypes[tiles[x, y, z]];
                     GameObject go = (GameObject)Instantiate(tt.tileVisualPrefab, new Vector3(x, y, z), Quaternion.identity);
                 }

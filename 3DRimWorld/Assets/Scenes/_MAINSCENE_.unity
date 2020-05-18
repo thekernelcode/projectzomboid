@@ -329,15 +329,23 @@ MonoBehaviour:
   - name: grass
     tileVisualPrefab: {fileID: 6719558792533069756, guid: abf374f0a3a6f5f4f8aabc01a2ad6d25,
       type: 3}
+    movementCost: 0
   - name: swamp
     tileVisualPrefab: {fileID: 6719558792533069756, guid: 67be96241a6c9d345b21b9ed03e75c7c,
       type: 3}
+    movementCost: 0
   - name: mountain
     tileVisualPrefab: {fileID: 6719558792533069756, guid: 0c40c2a99df9f214f93419ad14f4f1ab,
       type: 3}
+    movementCost: 0
   - name: air
     tileVisualPrefab: {fileID: 6719558792533069756, guid: a26b98191eccccc4886389f520f46844,
       type: 3}
+    movementCost: 0
+  - name: wall
+    tileVisualPrefab: {fileID: 4181508702709127756, guid: b67ea41831a6e0b4b8b101a1467c4bca,
+      type: 3}
+    movementCost: 999
 --- !u!4 &1164167839
 Transform:
   m_ObjectHideFlags: 0
@@ -383,6 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thePrefabToSpawn: {fileID: 4181508702709127756, guid: b67ea41831a6e0b4b8b101a1467c4bca,
     type: 3}
+  spawnPoints: []
 --- !u!4 &1340575388
 Transform:
   m_ObjectHideFlags: 0
