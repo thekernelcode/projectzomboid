@@ -92,20 +92,21 @@ public class MouseManager : MonoBehaviour
             if (Physics.Raycast(ray, out hitInfo))
             {
                 Debug.Log("Yes, we hit: " + hitInfo.collider.gameObject.name);
+                
+                // Gather info from tile we hit.
 
-                // Now let's spawn a new object
-
-                // Add spawn point to list of prefabs we're going to spawn.
                 int x = (int)hitInfo.collider.gameObject.transform.position.x;
                 int y = (int)hitInfo.collider.gameObject.transform.position.y;
                 int z = (int)hitInfo.collider.gameObject.transform.position.z;
+                TileType tt = worldTileMap.tileTypes[worldTileMap.tiles[x, y, z]]; ;
+
+                // Display info to debug log.
 
                 Debug.Log("Tile X Pos = " + x);
                 Debug.Log("Tile Y Pos = " + y);
                 Debug.Log("Tile Z Pos = " + z);
                 Debug.Log("Tile type is " + worldTileMap.tiles[x, y, z]);
 
-                TileType tt = worldTileMap.tileTypes[worldTileMap.tiles[x, y, z]]; ;
                 Debug.Log("Name of tiletype is " + tt.name);
                 Debug.Log("Movement cost for this tile is " + tt.movementCost);
             }
